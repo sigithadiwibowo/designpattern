@@ -12,6 +12,7 @@ public class ManagementResponse {
     public void doHandleIssue(Issue issue) {
         issue.setHandleBy("By Management ");
         issue.setAdditionalInfo("Issue closed by management ");
+        System.out.println("ManagementResponse.doHandleIssue");
     }
 
 

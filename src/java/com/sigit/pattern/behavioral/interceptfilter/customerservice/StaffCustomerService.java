@@ -13,29 +13,6 @@ import com.sigit.pattern.behavioral.interceptfilter.ServiceHandler;
 
 public class StaffCustomerService implements ServiceHandler {
 
-    ServiceHandler handler;
-
-
-    @Override
-    public void setNextHandler(ServiceHandler nextHandler) {
-        this.handler = nextHandler;
-    }
-
-
-    @Override
-    public ServiceHandler getLastHandler() {
-        ServiceHandler last = this;
-        while (last.getNextHandler() != null) {
-            last = last.getNextHandler();
-        }
-        return last;
-    }
-
-    @Override
-    public ServiceHandler getNextHandler() {
-        return this.handler;
-    }
-
     @Override
     public void doHandleIssue(Issue issue, CustomerServiceFilterChain filterChain) {
         issue.setHandleBy(this.toString());

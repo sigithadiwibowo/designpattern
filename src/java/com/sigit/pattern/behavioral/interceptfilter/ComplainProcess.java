@@ -1,5 +1,9 @@
 package com.sigit.pattern.behavioral.interceptfilter;
 
+import com.sigit.pattern.behavioral.interceptfilter.customerservice.ManagerCustomerService;
+import com.sigit.pattern.behavioral.interceptfilter.customerservice.SPVCustomerService;
+import com.sigit.pattern.behavioral.interceptfilter.customerservice.StaffCustomerService;
+
 /**
  * @author Sigit Hadi wibowo
  *         created date 5/18/2017.
@@ -9,23 +13,18 @@ package com.sigit.pattern.behavioral.interceptfilter;
 // filter manager
 public class ComplainProcess {
 
-    ManagementResponse response = new ManagementResponse();
-    CustomerServiceFilterChain filterChain = new CustomerServiceFilterChain();
+
+    private CustomerServiceFilterChain filterChain ;
 
     public ComplainProcess() {
+        filterChain = new CustomerServiceFilterChain(new ManagementResponse() , new StaffCustomerService() , new SPVCustomerService() , new ManagerCustomerService() );
+
     }
 
-
-    public void addFilterCustomerChain(ServiceHandler handler) {
-        filterChain.addHandler(handler);
-    }
 
 
     public void doProcess(Customer customer  ) {
         filterChain.doHandleIssue(customer.getIssue());
-
-
-//        response.doHandleIssue(issue);
     }
 
 

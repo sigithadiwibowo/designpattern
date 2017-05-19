@@ -1,5 +1,6 @@
 package com.sigit.pattern.behavioral.interceptfilter.customerservice;
 
+import com.sigit.pattern.behavioral.interceptfilter.CustomerServiceFilterChain;
 import com.sigit.pattern.behavioral.interceptfilter.Issue;
 import com.sigit.pattern.behavioral.interceptfilter.ServiceHandler;
 
@@ -12,34 +13,12 @@ import com.sigit.pattern.behavioral.interceptfilter.ServiceHandler;
 
 public class SPVCustomerService implements ServiceHandler {
 
-    ServiceHandler handler;
-
-
     @Override
-    public void setNextHandler(ServiceHandler nextHandler) {
-        this.handler = nextHandler;
-    }
-
-    @Override
-    public ServiceHandler getLastHandler() {
-        ServiceHandler last = this;
-        while (last.getNextHandler() != null) {
-            last = last.getNextHandler();
-        }
-        return last;
-    }
-
-    @Override
-    public ServiceHandler getNextHandler() {
-        return this.handler;
-    }
-
-    @Override
-    public void doHandleIssue(Issue issue) {
+    public void doHandleIssue(Issue issue , CustomerServiceFilterChain filterChain) {
         issue.setHandleBy(this.toString());
         System.out.println("SPVCustomerService.doHandleIssue");
         if (issue.getIssuePriority() > 20) {
-            handler.doHandleIssue(issue);
+            filterChain.doHandleIssue(issue);
 //            System.out.println(handler.toString() + " told " + lastHandlerBy.toString() + " that issue is closed");
             System.out.println(this.toString() + " said that issue is closed");
         } else {

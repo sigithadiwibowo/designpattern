@@ -9,14 +9,5 @@ package com.sigit.pattern.behavioral.interceptfilter;
 
 public interface ServiceHandler {
 
-
-    public void setNextHandler(ServiceHandler nextHandler);
-
-    public ServiceHandler getLastHandler();
-
-
-    public ServiceHandler getNextHandler();
-
-
     public void doHandleIssue(Issue issue , CustomerServiceFilterChain customerServiceFilterChain );
 }
