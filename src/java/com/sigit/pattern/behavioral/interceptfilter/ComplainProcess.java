@@ -14,11 +14,14 @@ import com.sigit.pattern.behavioral.interceptfilter.customerservice.StaffCustome
 public class ComplainProcess {
 
 
-    private CustomerServiceFilterChain filterChain ;
+    private ComplainProcessFilterChain filterChain ;
 
-    public ComplainProcess() {
-        filterChain = new CustomerServiceFilterChain(new ManagementResponse() , new StaffCustomerService() , new SPVCustomerService() , new ManagerCustomerService() );
+    public ComplainProcess(ComplainProcessFilterChain filterChain) {
+        this.filterChain = filterChain ;
+    }
 
+    public ComplainProcess(){
+        this.filterChain = new CustomerServiceFilterChain(new ManagementResponse() , new StaffCustomerService() , new SPVCustomerService() , new ManagerCustomerService() );
     }
 
 

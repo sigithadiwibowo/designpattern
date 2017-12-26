@@ -1,6 +1,7 @@
 package com.sigit.pattern.behavioral.interceptfilter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,20 +12,15 @@ import java.util.List;
  */
 
 
-public class CustomerServiceFilterChain {
+public class CustomerServiceFilterChain implements ComplainProcessFilterChain{
 
     private Iterator<ServiceHandler> iterator;
     private ManagementResponse target;
 
-    private CustomerServiceFilterChain() {
-        // do nothing
-    }
 
     public CustomerServiceFilterChain(ManagementResponse target, ServiceHandler... serviceHandlers) {
         List<ServiceHandler> list = new ArrayList<>();
-        for (ServiceHandler handler : serviceHandlers) {
-            list.add(handler);
-        }
+        Collections.addAll(list, serviceHandlers);
         iterator = list.iterator();
         this.target = target;
     }

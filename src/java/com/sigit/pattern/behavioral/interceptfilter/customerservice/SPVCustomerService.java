@@ -19,7 +19,6 @@ public class SPVCustomerService implements ServiceHandler {
         System.out.println("SPVCustomerService.doHandleIssue");
         if (issue.getIssuePriority() > 20) {
             filterChain.doHandleIssue(issue);
-//            System.out.println(handler.toString() + " told " + lastHandlerBy.toString() + " that issue is closed");
             System.out.println(this.toString() + " said that issue is closed");
         } else {
             System.out.println("Issue closed by : " + issue.getHandleBy());

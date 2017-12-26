@@ -20,7 +20,6 @@ public class StaffCustomerService implements ServiceHandler {
         if (issue.getIssuePriority() > 10) {
             filterChain.doHandleIssue(issue);
             // tell customer its done
-//            System.out.println(handler.toString() + " told " + lastHandlerBy.toString() + " that issue is closed");
             System.out.println(this.toString() + " said that issue is closed");
         } else {
             System.out.println("Issue closed by : " + issue.getHandleBy());

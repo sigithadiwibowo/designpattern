@@ -14,45 +14,33 @@ import org.testng.annotations.Test;
 
 public class IssueRegisterTest {
 
-//    @Test(enabled = false)
     @Test()
     public void testIssueHandleByStaffCustomer() throws Exception {
         Issue issue = new Issue();
         issue.setIssuePriority(10);
         Customer customer = new Customer(issue);
         ComplainProcess process = new ComplainProcess();
-//        process.addFilterCustomerChain(new StaffCustomerService());
-//        process.addFilterCustomerChain(new SPVCustomerService());
-//        process.addFilterCustomerChain(new ManagerCustomerService());
         process.doProcess(customer);
     }
 
 
     @Test()
-//    @Test(enabled = false)
     public void testIssueHandleBySPVCustomer() throws Exception {
         Issue issue = new Issue();
         issue.setIssuePriority(20);
         Customer customer = new Customer(issue);
         ComplainProcess process = new ComplainProcess();
-//        process.addFilterCustomerChain(new StaffCustomerService());
-//        process.addFilterCustomerChain(new SPVCustomerService());
-//        process.addFilterCustomerChain(new ManagerCustomerService());
         process.doProcess(customer);
     }
 
 
 
     @Test()
-//@Test(enabled = false)
     public void testIssueHandleByManager() throws Exception {
         Issue issue = new Issue();
         issue.setIssuePriority(30);
         Customer customer = new Customer(issue);
         ComplainProcess process = new ComplainProcess();
-//        process.addFilterCustomerChain(new StaffCustomerService());
-//        process.addFilterCustomerChain(new SPVCustomerService());
-//        process.addFilterCustomerChain(new ManagerCustomerService());
         process.doProcess(customer);
     }
 
@@ -62,6 +50,19 @@ public class IssueRegisterTest {
         issue.setIssuePriority(50);
         Customer customer = new Customer(issue);
         ComplainProcess process = new ComplainProcess();
+        process.doProcess(customer);
+    }
+
+
+    @Test
+    public void testIssueHandleByCustomProcess() throws Exception {
+        Issue issue = new Issue() ;
+        issue.setIssuePriority(20 );
+        Customer customer = new Customer(issue);
+        ComplainProcessFilterChain chain = nextIssue -> {
+            System.out.println("cannot handle any issue");
+        };
+        ComplainProcess process = new ComplainProcess(chain);
         process.doProcess(customer);
     }
 }

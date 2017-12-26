@@ -19,7 +19,6 @@ public class ManagerCustomerService implements ServiceHandler {
         System.out.println("ManagerCustomerService.doHandleIssue");
         if (issue.getIssuePriority() > 30) {
             filterChain.doHandleIssue(issue);
-//            System.out.println(handler.toString() + " told " + lastHandlerBy.toString() + " that issue is closed");
             System.out.println(this.toString() + " said that issue is closed");
         } else {
             System.out.println("Issue closed by : " + issue.getHandleBy());
