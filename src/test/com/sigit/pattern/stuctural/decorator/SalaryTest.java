@@ -1,4 +1,4 @@
-package com.sigit.pattern.behavioral.command;
+package com.sigit.pattern.stuctural.decorator;
 
 
 import com.sigit.pattern.stuctural.decorator.Deducation;
