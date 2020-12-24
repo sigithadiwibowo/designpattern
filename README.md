@@ -1,8 +1,5 @@
 # designpattern
 
-ini adalah tempat belajar design pattern GoF
-
-kalo ada yang salah implementasi , mohon dikasih tau :)
 ```
 behavioral
     - command
@@ -19,7 +16,6 @@ structural
     - decorator
     - proxy
     - facade
-kindly regards,
 ```
 sigit .
 
